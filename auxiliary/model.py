@@ -346,6 +346,15 @@ class AE_AtlasNet_Animal(nn.Module):
 
 
 if __name__ == '__main__':
+    batch_size = 2
+    sim_data = torch.rand(batch_size, 6890 ,3)
+    sim_data = sim_data.transpose(2, 1).contiguous()
+    idx = np.random.choice(6890, size=2500)
+    idx = torch.from_numpy(idx)
+    idx = idx.unsqueeze(0).expand(batch_size, 2500).contiguous()
+    model = AE_AtlasNet_Humans()
+    pointsReconstructed = model.forward_idx(sim_data, idx)  
+        
     # print('testing our method...')
     # sim_data = Variable(torch.rand(1, 3, 400, 400))
     # model = PointNetAE_RNN_grid2mesh()

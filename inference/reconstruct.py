@@ -42,6 +42,9 @@ def regress(points):
         global_variables.optimizer.step()
         loss = loss_net.item()
         i = i + 1
+        if i % 100 == 0:
+            print("log loss of reg: {}, loop: {}".format(np.log(loss),i))
+                    
     with torch.no_grad():
         if global_variables.opt.HR:
             pointsReconstructed = global_variables.network.decode_full(input_param)  # forward pass

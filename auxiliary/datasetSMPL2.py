@@ -84,7 +84,23 @@ class SMPL(data.Dataset):
 
 if __name__ == '__main__':
     print('Testing Shapenet dataset')
-    d = SMPL(train=True)
+
+    d = SMPL(train=False, regular = True)
+    # dataloader = torch.utils.data.DataLoader(d, batch_size=1,
+    #                                      shuffle=True, num_workers=1)
+
+    # for i, data in enumerate(dataloader, 0):
+    #     if i == 1: 
+    #         break
+    #     points, idx,_ = data
+    #     print(idx.shape)
+
+    for i, data in enumerate(d, 0):
+        if i == 1: 
+            break        
+        points, idx,_ = data
+        print(idx.shape)
+        
     import visdom
 
     vis = visdom.Visdom(port=8888, env="test-rot")

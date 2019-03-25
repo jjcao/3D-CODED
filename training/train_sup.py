@@ -35,7 +35,7 @@ distChamfer =  ext.chamferDist()
 
 # =============DEFINE stuff for logs ======================================== #
 # Launch visdom for visualization
-vis = visdom.Visdom(port=8888, env=opt.env)
+vis = visdom.Visdom(port=8097, env=opt.env)
 now = datetime.datetime.now()
 save_path = now.isoformat()
 dir_name = os.path.join('log', save_path)
